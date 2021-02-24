@@ -1,48 +1,48 @@
-import React from 'react';
+import React, {useState} from 'react';
 //IMPORT STYLES
 import styled from 'styled-components';
 import {StyledAbout} from "../styles";
+//TOGGLEFAQ
+import Toggle from "./Toggle";
+import {AnimateSharedLayout} from "framer-motion";
+import {useScroll} from "./useScroll";
+import {scrollReveal} from "../animation";
 
 const FaqSection = () => {
-    return(
-        <StyledFaq>
+    const [element,controls] = useScroll();
+    return (
+        <StyledFaq variants={scrollReveal} ref={element} animate={controls} initial="hidden">
             <h2>Any questions <span>FAQ</span></h2>
-            <div className="question">
-                <h4>How do i start ?</h4>
-                <div className="answer">
-                    <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-                        consectetur adipisicing elit. Dicta, eos?
-                    </p>
-                </div>
-                <div className="faq-line"></div>
-            </div>
-            <div className="question">
-                <h4>Daily schedule</h4>
-                <div className="answer">
-                    <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-                        consectetur adipisicing elit. Dicta, eos?
-                    </p>
-                </div>
-                <div className="faq-line"></div>
-            </div>
-            <div className="question">
-                <h4>Different payment methods</h4>
-                <div className="answer">
-                    <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-                        consectetur adipisicing elit. Dicta, eos?
-                    </p>
-                </div>
-                <div className="faq-line"></div>
-            </div>
-            <div className="question">
-                <h4>What product do you offer</h4>
-                <div className="answer">
-                    <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-                        consectetur adipisicing elit. Dicta, eos?
-                    </p>
-                </div>
-                <div className="faq-line"></div>
-            </div>
+            <AnimateSharedLayout>
+                <Toggle title="How do i start ?">
+                    <div className="answer">
+                        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+                            consectetur adipisicing elit. Dicta, eos?
+                        </p>
+                    </div>
+                </Toggle>
+                <Toggle title="Daily schedule">
+                    <div className="answer">
+                        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+                            consectetur adipisicing elit. Dicta, eos?
+                        </p>
+                    </div>
+                </Toggle>
+                <Toggle title="Different payment methods">
+                    <div className="answer">
+                        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+                            consectetur adipisicing elit. Dicta, eos?
+                        </p>
+                    </div>
+                </Toggle>
+                <Toggle title="What product do you offer">
+                    <div className="answer">
+                        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+                            consectetur adipisicing elit. Dicta, eos?
+                        </p>
+                    </div>
+                </Toggle>
+            </AnimateSharedLayout>
         </StyledFaq>
     )
 }
